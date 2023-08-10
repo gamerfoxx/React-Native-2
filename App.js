@@ -20,11 +20,14 @@ export default function App() {
 	function addToDoHandler(enteredToDoText) {
 		setToDo((prevToDo) => [
 			...prevToDo,
-			{ text: enteredToDoText, key: Math.random().toString() },
+			{ text: enteredToDoText, id: Math.random().toString() },
 		]);
 		console.log(toDo);
 	}
-	function deleteToDoHandler() {
+	function deleteToDoHandler(id) {
+		setToDo((currentToDo) => {
+			return currentToDo.filter((item) => item.id !== id);
+		});
 		console.log('Delete');
 	}
 
@@ -38,6 +41,7 @@ export default function App() {
 						return (
 							<GoalItem
 								text={itemData.item.text}
+								id={itemData.item.id}
 								onDeleteItem={deleteToDoHandler}
 							/>
 						);

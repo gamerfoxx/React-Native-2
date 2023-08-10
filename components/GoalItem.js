@@ -1,9 +1,10 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 //Pressable is the newest version, and should be used to make an item selectable
 
+//bind is to set the parameter to be used when the function is run
 function GoalItem(props) {
 	return (
-		<Pressable onPress={props.onDeleteItem}>
+		<Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
 			<View style={styles.toDoListItem}>
 				<Text style={styles.toDoListItemText}>{props.text}</Text>
 			</View>
