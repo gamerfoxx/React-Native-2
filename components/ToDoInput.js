@@ -1,4 +1,11 @@
-import { View, TextInput, Button, StyleSheet, Modal } from 'react-native';
+import {
+	View,
+	TextInput,
+	Button,
+	StyleSheet,
+	Modal,
+	Image,
+} from 'react-native';
 import { useState } from 'react';
 
 function ToDoInput(props) {
@@ -19,6 +26,10 @@ function ToDoInput(props) {
 			visible={props.visible}
 			animationType="fade">
 			<View style={styles.inputContainer}>
+				<Image
+					style={styles.image}
+					source={require('../assets/images/goal.png')}
+				/>
 				<TextInput
 					onChangeText={toDoInputHandler}
 					style={styles.textInput}
@@ -56,6 +67,7 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderColor: '#ccc',
 		marginBottom: 10,
+		backgroundColor: '#900',
 	},
 	textInput: {
 		borderWidth: 1,
@@ -70,5 +82,10 @@ const styles = StyleSheet.create({
 	button: {
 		width: 100,
 		marginHorizontal: 8,
+	},
+	image: {
+		width: 100,
+		height: 100,
+		margin: 20,
 	},
 });
