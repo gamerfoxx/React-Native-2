@@ -32,7 +32,13 @@ export default function App() {
 			</View>
 			<View style={styles.toDoContainer}>
 				{appLvLToDo.map((element) => {
-					return <Text key={element}>{element}</Text>;
+					return (
+						<View
+							style={styles.toDoListItem}
+							key={element}>
+							<Text style={styles.toDoListItemText}>{element}</Text>
+						</View>
+					);
 				})}
 			</View>
 		</View>
@@ -40,7 +46,15 @@ export default function App() {
 }
 
 //not all CSS styles exist in react native
+
 //Flexbox enabled by default
+
+//styles do not cascade
+
+//container styles should be applied at the View level
+//text styles should be added at the Text level
+//This is to ensure cross platform consistency
+
 const styles = StyleSheet.create({
 	appContainer: {
 		paddingTop: 50,
@@ -55,6 +69,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 20,
 		borderBottomWidth: 1,
 		borderColor: '#ccc',
+		marginBottom: 10,
 	},
 	textInput: {
 		borderWidth: 1,
@@ -65,5 +80,16 @@ const styles = StyleSheet.create({
 	},
 	toDoContainer: {
 		flex: 4,
+	},
+	toDoListItem: {
+		width: '100%',
+		margin: 5,
+		borderRadius: 6,
+		borderWidth: 1,
+		padding: 10,
+		backgroundColor: '#03F',
+	},
+	toDoListItemText: {
+		color: '#fff',
 	},
 });
