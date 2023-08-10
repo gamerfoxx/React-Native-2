@@ -4,31 +4,36 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native'; //Styl
 //full list found https://reactnative.dev/docs/intro-react-native-components
 
 export default function App() {
-	const [appLvLEnteredToDoText, setAppLvLEnteredToDoText] = useState();
-	function goalInputHandler(pEnteredText) {
+	const [appLvLEnteredToDoText, setAppLvLEnteredToDoText] = useState('');
+	const [appLvLToDo, setAppLvLToDo] = useState([]);
+
+	function toDoInputHandler(pEnteredText) {
 		setAppLvLEnteredToDoText(pEnteredText);
 		// console.log(pEnteredText);
 	}
 
-	function addGoalHandler() {
-		console.log(appLvLEnteredToDoText);
+	function addToDoHandler() {
+		setAppLvLToDo((prevToDo) => [...prevToDo, appLvLEnteredToDoText]);
+		console.log(appLvLToDo);
 	}
 
 	return (
 		<View style={styles.appContainer}>
 			<View style={styles.inputContainer}>
 				<TextInput
-					onChangeText={goalInputHandler}
+					onChangeText={toDoInputHandler}
 					style={styles.textInput}
 					placeholder="To Do"
 				/>
 				<Button
-					onPress={addGoalHandler}
+					onPress={addToDoHandler}
 					title="Add To Do"
 				/>
 			</View>
 			<View style={styles.toDoContainer}>
-				<Text>To do</Text>
+				{appLvLToDo.map((element) => {
+					return <Text>{element}</Text>;
+				})}
 			</View>
 		</View>
 	);
