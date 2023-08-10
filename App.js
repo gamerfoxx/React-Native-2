@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native'; //StyleSheet = styles, Text = added text, View = div
+import {
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	TextInput,
+	ScrollView,
+} from 'react-native'; //StyleSheet = styles, Text = added text, View = div
 //full list found https://reactnative.dev/docs/intro-react-native-components
 
 export default function App() {
@@ -17,6 +24,8 @@ export default function App() {
 		console.log(appLvLToDo);
 	}
 
+	//ScrollView is required in ordered to make ANY content scrollable
+	//Sizing styles should be applied to the parent View
 	return (
 		<View style={styles.appContainer}>
 			<View style={styles.inputContainer}>
@@ -31,15 +40,17 @@ export default function App() {
 				/>
 			</View>
 			<View style={styles.toDoContainer}>
-				{appLvLToDo.map((element) => {
-					return (
-						<View
-							style={styles.toDoListItem}
-							key={element}>
-							<Text style={styles.toDoListItemText}>{element}</Text>
-						</View>
-					);
-				})}
+				<ScrollView>
+					{appLvLToDo.map((element) => {
+						return (
+							<View
+								style={styles.toDoListItem}
+								key={element}>
+								<Text style={styles.toDoListItemText}>{element}</Text>
+							</View>
+						);
+					})}
+				</ScrollView>
 			</View>
 		</View>
 	);
