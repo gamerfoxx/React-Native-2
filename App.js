@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ToDoItem from './components/ToDoItem';
 import ToDoInput from './components/ToDoInput';
+import { StatusBar } from 'expo-status-bar';
 
 import { StyleSheet, View, FlatList, Button } from 'react-native'; //StyleSheet = styles, Text = added text, View = div
 //full list found https://reactnative.dev/docs/intro-react-native-components
@@ -42,32 +43,35 @@ export default function App() {
 	}
 
 	return (
-		<View style={styles.appContainer}>
-			<Button
-				title="Add New To Do"
-				color="#03F"
-				onPress={startAddToDoHandler}
-			/>
-			<ToDoInput
-				visible={modalVisible}
-				onAddToDo={addToDoHandler}
-				onCancel={endAddToDoHandler}
-			/>
-			<View style={styles.toDoContainer}>
-				<FlatList
-					data={toDo}
-					renderItem={(itemData) => {
-						return (
-							<ToDoItem
-								text={itemData.item.text}
-								id={itemData.item.id}
-								onDeleteItem={deleteToDoHandler}
-							/>
-						);
-					}}
+		<>
+			<StatusBar style="light" />
+			<View style={styles.appContainer}>
+				<Button
+					title="Add New To Do"
+					color="#03F"
+					onPress={startAddToDoHandler}
 				/>
+				<ToDoInput
+					visible={modalVisible}
+					onAddToDo={addToDoHandler}
+					onCancel={endAddToDoHandler}
+				/>
+				<View style={styles.toDoContainer}>
+					<FlatList
+						data={toDo}
+						renderItem={(itemData) => {
+							return (
+								<ToDoItem
+									text={itemData.item.text}
+									id={itemData.item.id}
+									onDeleteItem={deleteToDoHandler}
+								/>
+							);
+						}}
+					/>
+				</View>
 			</View>
-		</View>
+		</>
 	);
 }
 
@@ -84,8 +88,9 @@ export default function App() {
 const styles = StyleSheet.create({
 	appContainer: {
 		paddingTop: 50,
-		paddingHorizontal: 16,
+		paddingHorizontal: 10,
 		flex: 1,
+		backgroundColor: '#654321',
 	},
 	toDoContainer: {
 		flex: 4,

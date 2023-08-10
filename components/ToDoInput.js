@@ -39,14 +39,16 @@ function ToDoInput(props) {
 				<View style={styles.buttonContainer}>
 					<View style={styles.button}>
 						<Button
-							onPress={addToDoHandler}
-							title="Add To Do"
+							title="Cancel"
+							onPress={props.onCancel}
+							color="#666"
 						/>
 					</View>
 					<View style={styles.button}>
 						<Button
-							title="Cancel"
-							onPress={props.onCancel}
+							onPress={addToDoHandler}
+							title="Add To Do"
+							color="#666"
 						/>
 					</View>
 				</View>
@@ -72,9 +74,12 @@ const styles = StyleSheet.create({
 	textInput: {
 		borderWidth: 1,
 		borderColor: '#ccc',
+		backgroundColor: '#ccc',
+		color: '#000',
 		width: '100%',
 		marginRight: 8,
 		padding: 8,
+		borderRadius: 6,
 	},
 	buttonContainer: {
 		flexDirection: 'row',

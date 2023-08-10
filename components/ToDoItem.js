@@ -20,7 +20,7 @@ export default ToDoItem;
 const styles = StyleSheet.create({
 	toDoListItem: {
 		width: '100%',
-		margin: 5,
+		marginVertical: 10,
 		borderRadius: 6,
 		borderWidth: 1,
 		backgroundColor: '#03F',
