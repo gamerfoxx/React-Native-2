@@ -1,7 +1,7 @@
 import { View, TextInput, Button, StyleSheet, Modal } from 'react-native';
 import { useState } from 'react';
 
-function GoalInput(props) {
+function ToDoInput(props) {
 	const [enteredToDoText, setEnteredToDoText] = useState('');
 
 	function toDoInputHandler(pEnteredText) {
@@ -34,7 +34,7 @@ function GoalInput(props) {
 	);
 }
 
-export default GoalInput;
+export default ToDoInput;
 
 const styles = StyleSheet.create({
 	inputContainer: {

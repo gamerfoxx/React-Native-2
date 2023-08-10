@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Pressable } from 'react-native';
 //Pressable is the newest version, and should be used to make an item selectable
 
 //bind is to set the parameter to be used when the function is run
-function GoalItem(props) {
+function ToDoItem(props) {
 	return (
 		<Pressable
 			android_ripple={{ color: 'red' }}
@@ -15,7 +15,7 @@ function GoalItem(props) {
 	);
 }
 
-export default GoalItem;
+export default ToDoItem;
 
 const styles = StyleSheet.create({
 	toDoListItem: {

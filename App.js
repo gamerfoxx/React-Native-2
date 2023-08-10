@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import GoalItem from './components/GoalItem';
-import GoalInput from './components/GoalInput';
+import ToDoItem from './components/ToDoItem';
+import ToDoInput from './components/ToDoInput';
 
 import { StyleSheet, View, FlatList, Button } from 'react-native'; //StyleSheet = styles, Text = added text, View = div
 //full list found https://reactnative.dev/docs/intro-react-native-components
@@ -43,7 +43,7 @@ export default function App() {
 				color="#03F"
 				onPress={startAddToDoHandler}
 			/>
-			<GoalInput
+			<ToDoInput
 				visible={modalVisible}
 				onAddToDo={addToDoHandler}
 			/>
@@ -52,7 +52,7 @@ export default function App() {
 					data={toDo}
 					renderItem={(itemData) => {
 						return (
-							<GoalItem
+							<ToDoItem
 								text={itemData.item.text}
 								id={itemData.item.id}
 								onDeleteItem={deleteToDoHandler}
