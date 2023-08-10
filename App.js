@@ -24,6 +24,9 @@ export default function App() {
 		]);
 		console.log(toDo);
 	}
+	function deleteToDoHandler() {
+		console.log('Delete');
+	}
 
 	return (
 		<View style={styles.appContainer}>
@@ -32,7 +35,12 @@ export default function App() {
 				<FlatList
 					data={toDo}
 					renderItem={(itemData) => {
-						return <GoalItem text={itemData.item.text} />;
+						return (
+							<GoalItem
+								text={itemData.item.text}
+								onDeleteItem={deleteToDoHandler}
+							/>
+						);
 					}}
 				/>
 			</View>
