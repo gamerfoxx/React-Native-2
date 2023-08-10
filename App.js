@@ -21,6 +21,9 @@ export default function App() {
 	function startAddToDoHandler() {
 		setModalVisible(true);
 	}
+	function endAddToDoHandler() {
+		setModalVisible(false);
+	}
 
 	function addToDoHandler(enteredToDoText) {
 		setToDo((prevToDo) => [
@@ -28,7 +31,9 @@ export default function App() {
 			{ text: enteredToDoText, id: Math.random().toString() },
 		]);
 		console.log(toDo);
+		endAddToDoHandler();
 	}
+
 	function deleteToDoHandler(id) {
 		setToDo((currentToDo) => {
 			return currentToDo.filter((item) => item.id !== id);
@@ -46,6 +51,7 @@ export default function App() {
 			<ToDoInput
 				visible={modalVisible}
 				onAddToDo={addToDoHandler}
+				onCancel={endAddToDoHandler}
 			/>
 			<View style={styles.toDoContainer}>
 				<FlatList
