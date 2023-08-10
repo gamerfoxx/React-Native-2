@@ -4,7 +4,10 @@ import { StyleSheet, View, Text, Pressable } from 'react-native';
 //bind is to set the parameter to be used when the function is run
 function GoalItem(props) {
 	return (
-		<Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
+		<Pressable
+			android_ripple={{ color: 'red' }}
+			onPress={props.onDeleteItem.bind(this, props.id)}
+			style={({ pressed }) => pressed && styles.pressedItem}>
 			<View style={styles.toDoListItem}>
 				<Text style={styles.toDoListItemText}>{props.text}</Text>
 			</View>
@@ -20,10 +23,13 @@ const styles = StyleSheet.create({
 		margin: 5,
 		borderRadius: 6,
 		borderWidth: 1,
-		padding: 10,
 		backgroundColor: '#03F',
 	},
+	pressedItem: {
+		opacity: 0.5,
+	},
 	toDoListItemText: {
+		padding: 10,
 		color: '#fff',
 	},
 });
