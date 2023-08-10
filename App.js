@@ -2,7 +2,7 @@ import { useState } from 'react';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
 
-import { StyleSheet, View, FlatList } from 'react-native'; //StyleSheet = styles, Text = added text, View = div
+import { StyleSheet, View, FlatList, Button } from 'react-native'; //StyleSheet = styles, Text = added text, View = div
 //full list found https://reactnative.dev/docs/intro-react-native-components
 
 //ScrollView is required in ordered to make ANY content scrollable
@@ -16,6 +16,11 @@ import { StyleSheet, View, FlatList } from 'react-native'; //StyleSheet = styles
 
 export default function App() {
 	const [toDo, setToDo] = useState([]);
+	const [modalVisible, setModalVisible] = useState(false);
+
+	function startAddToDoHandler() {
+		setModalVisible(true);
+	}
 
 	function addToDoHandler(enteredToDoText) {
 		setToDo((prevToDo) => [
@@ -33,7 +38,15 @@ export default function App() {
 
 	return (
 		<View style={styles.appContainer}>
-			<GoalInput onAddToDo={addToDoHandler} />
+			<Button
+				title="Add New To Do"
+				color="#03F"
+				onPress={startAddToDoHandler}
+			/>
+			<GoalInput
+				visible={modalVisible}
+				onAddToDo={addToDoHandler}
+			/>
 			<View style={styles.toDoContainer}>
 				<FlatList
 					data={toDo}
