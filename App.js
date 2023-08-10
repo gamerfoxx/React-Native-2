@@ -32,7 +32,7 @@ export default function App() {
 			</View>
 			<View style={styles.toDoContainer}>
 				{appLvLToDo.map((element) => {
-					return <Text>{element}</Text>;
+					return <Text key={element}>{element}</Text>;
 				})}
 			</View>
 		</View>
